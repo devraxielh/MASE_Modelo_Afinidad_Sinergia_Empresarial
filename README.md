@@ -43,8 +43,8 @@ Se define como el número de coincidencias exactas en los objetivos estratégico
 M_{afinidad} = \sum_{i=1}^{n} (O_{1i} = O_{2i})
 ```
 Donde:
-- \( O_{1i} \) y \( O_{2i} \) son los valores de los objetivos estratégicos de las empresas 1 y 2.
-- \( n \) es el número total de objetivos estratégicos evaluados.
+- $O_{1i}$ y $O_{2i}$ son los valores de los objetivos estratégicos de las empresas 1 y 2.
+- $n$ es el número total de objetivos estratégicos evaluados.
 - Se suma 1 por cada objetivo coincidente.
 
 #### **b) Matching por Sinergia**
@@ -57,19 +57,19 @@ Este valor es alto si las empresas tienen estrategias complementarias.
 #### **c) Diferencia de Empleados**
 Se usa una normalización inversa para favorecer empresas con números similares de empleados:
 ```math
-M_{empleados} = rac{1}{1 + |E_1 - E_2|}
+M_{empleados} = \frac{1}{1 + |E_1 - E_2|}
 ```
 Donde:
-- \( E_1 \) y \( E_2 \) son el número total de empleados de cada empresa.
+- $E_1$ y $E_2$ son el número total de empleados de cada empresa.
 - Se suma 1 en el denominador para evitar divisiones por cero.
 - Empresas con tamaños similares obtienen valores más altos.
 
 #### **d) Coincidencia de Ciudad**
 Si ambas empresas están en la misma ciudad:
 ```math
-M_{ciudad} = egin{cases} 
-1, & 	ext{si la ciudad es la misma} \
-0, & 	ext{si son ciudades diferentes} 
+M_{ciudad} = \begin{cases} 
+1, & \text{si la ciudad es la misma} \\
+0, & \text{si son ciudades diferentes} 
 \end{cases}
 ```
 
@@ -100,6 +100,3 @@ La salida consiste en una tabla con:
 - **Fomentar asociaciones estratégicas**: Empresas con alta afinidad pueden formar **alianzas** para potenciar sus estrategias.
 - **Identificar oportunidades de crecimiento**: Empresas con alta sinergia pueden **complementarse** en el mercado.
 - **Optimizar ecosistemas empresariales**: Facilita la integración de empresas en zonas geográficas estratégicas.
-
-## Contacto
-Si necesitas ajustes en los pesos de los factores o agregar más criterios, puedes modificar los parámetros del código o contactarme para mejoras. 🚀
