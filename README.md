@@ -1,7 +1,6 @@
 # MASE Modelo de Afinidad y Sinergia Empresarial
-
-
 ## Algoritmo de Matching entre Empresas en un Ecosistema
+### Rodrigo García,PhD
 
 ## Descripción
 Este algoritmo identifica empresas compatibles dentro de un ecosistema empresarial basado en **objetivos estratégicos**, **número de empleados** y **ubicación geográfica**. Se generan emparejamientos según **afinidad** (similitud en objetivos) y **sinergia** (complementariedad de estrategias).
@@ -13,11 +12,6 @@ Este algoritmo identifica empresas compatibles dentro de un ecosistema empresari
 4. **Considerar el número de empleados** para identificar organizaciones con tamaños similares.
 5. **Considerar la ciudad** para favorecer asociaciones geográficas cercanas.
 6. **Generar una tabla de emparejamientos** ordenada según el mejor match.
-
-## Requisitos
-- Python 3.8+
-- Pandas
-- ace_tools (para visualización de resultados)
 
 ## Uso
 ### 1. **Carga de Datos**
@@ -90,11 +84,11 @@ La salida consiste en una tabla con:
 
 ### 5. **Ejemplo de Resultados**
 
-| Empresa 1 | Empresa 2 | Ciudad 1 | Ciudad 2 | Match Afinidad | Match Sinergia | Total Empleados 1 | Total Empleados 2 | Diferencia Empleados |
-|-----------|-----------|----------|----------|---------------|---------------|------------------|------------------|------------------|
-| Comercializadora de Frutas | Comercializadora de Electrodomésticos | Valledupar | Valledupar | 6 | 2 | 95 | 95 | 0 |
-| Transportes del Litoral | Servicios de Jardinería | Riohacha | Riohacha | 6 | 2 | 80 | 80 | 0 |
-| Producción de Lácteos | Manufacturas de Madera | Sincelejo | Sincelejo | 6 | 2 | 140 | 140 | 0 |
+| Empresa 1 | Empresa 2 | Ciudad 1 | Ciudad 2 | Match Afinidad | Match Sinergia | Total Empleados 1 | Total Empleados 2 |
+|-----------|-----------|----------|----------|---------------|---------------|------------------|------------------|
+| Comercializadora de Frutas | Comercializadora de Electrodomésticos | Valledupar | Valledupar | 6 | 2 | 95 | 95 |
+| Transportes del Litoral | Servicios de Jardinería | Riohacha | Riohacha | 6 | 2 | 80 | 80 | 
+| Producción de Lácteos | Manufacturas de Madera | Sincelejo | Sincelejo | 6 | 2 | 140 | 140 |
 
 ### **6. Aplicaciones y Uso**
 - **Fomentar asociaciones estratégicas**: Empresas con alta afinidad pueden formar **alianzas** para potenciar sus estrategias.
