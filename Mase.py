@@ -1,57 +1,88 @@
+
 import pandas as pd
 from itertools import combinations
+
+# Cargar los datos desde un archivo Excel
 def load_data(file_path):
     xls = pd.ExcelFile(file_path)
     df = pd.read_excel(xls, sheet_name=xls.sheet_names[0])
     return df
 
-# Calcular la coincidencia entre dos empresas
-def calcular_match_completo(emp1, emp2, tipo="afinidad"):
-    objetivos_cols = ['crear_nuevos_modelos_negocio', 'generar_eficiencias', 
-                      'fidelizar_mercado_actual', 'diversificar_mercado']
-    obj1 = emp1[objetivos_cols].values
-    obj2 = emp2[objetivos_cols].values
+# Calcular el match completo entre dos empresas según el modelo MASE
+def calcular_match_mase(emp1, emp2):
+    # Objetivos estratégicos
+    objetivos = [
+        'crear_nuevos_modelos_negocio', 'generar_eficiencias',
+        'fidelizar_mercado_actual', 'diversificar_mercado'
+    ]
 
-    if tipo == "afinidad":
-        match_score = sum(obj1 == obj2)
-    elif tipo == "sinergia":
-        match_score = sum((obj1 == 1) & (obj2 == 0)) + sum((obj1 == 0) & (obj2 == 1))
-    else:
-        match_score = 0
-    # Factor de coincidencia por empleados
-    empleados_diff = abs(emp1["total_empleados"] - emp2["total_empleados"])
-    empleados_score = 1 / (1 + empleados_diff)  # Normalización inversa
-    # Coincidencia de ciudad
-    ciudad_score = 1 if emp1["ciudad"] == emp2["ciudad"] else 0
-    # Score total ponderado
-    match_total = match_score + empleados_score + ciudad_score
-    return match_total
+    # Intereses estratégicos
+    intereses = [
+        'incremento_ventas', 'llegar_nuevos_mercados', 'lanzamiento_nuevos_productos',
+        'mejoramiento_productividad', 'incremento_capacidad_productiva',
+        'desarrollo_nuevos_canales', 'implementacion_ti',
+        'infraestructura_fisica', 'compra_maquinaria_equipos'
+    ]
 
-def generar_matching(df):
-    df["total_empleados"] = df["num_empleados_directos"] + df["num_empleados_indirectos"]
+    estrategia_cols = objetivos + intereses
+
+    s1 = emp1[estrategia_cols].values
+    s2 = emp2[estrategia_cols].values
+
+    # 1. Afinidad estratégica
+    match_afinidad = sum(s1 == s2)
+
+    # 2. Sinergia estratégica
+    match_sinergia = sum((s1 == 1) & (s2 == 0)) + sum((s1 == 0) & (s2 == 1))
+
+    # 3. Empleados
+    e1 = emp1["num_empleados_directos"] + emp1["num_empleados_indirectos"]
+    e2 = emp2["num_empleados_directos"] + emp2["num_empleados_indirectos"]
+    match_empleados = 1 / (1 + abs(e1 - e2))
+
+    # 4. Ciudad
+    match_ciudad = 1 if emp1["ciudad"] == emp2["ciudad"] else 0
+
+    # 5. Tamaño
+    match_tamaño = 1 if emp1["tamaño"] == emp2["tamaño"] else 0
+
+    # 6. Puntaje total
+    match_total = match_afinidad + match_sinergia + match_empleados + match_ciudad + match_tamaño
+
+    return {
+        "Empresa 1": emp1["nombrecomercial"],
+        "Empresa 2": emp2["nombrecomercial"],
+        "Ciudad 1": emp1["ciudad"],
+        "Ciudad 2": emp2["ciudad"],
+        "Tamaño 1": emp1["tamaño"],
+        "Tamaño 2": emp2["tamaño"],
+        "Match Afinidad": match_afinidad,
+        "Match Sinergia": match_sinergia,
+        "Total Empleados 1": e1,
+        "Total Empleados 2": e2,
+        "Diferencia Empleados": abs(e1 - e2),
+        "Match Ciudad": match_ciudad,
+        "Match Tamaño": match_tamaño,
+        "Puntaje Total": match_total
+    }
+
+# Generar tabla con los mejores emparejamientos
+def generar_matching_mase(df):
     matches = []
-    
-    for (i, row1), (j, row2) in combinations(df.iterrows(), 2):
-        match_afinidad = calcular_match_completo(row1, row2, tipo="afinidad")
-        match_sinergia = calcular_match_completo(row1, row2, tipo="sinergia")
-        
-        matches.append({
-            "Empresa 1": row1["razonsocial"],
-            "Empresa 2": row2["razonsocial"],
-            "Ciudad 1": row1["ciudad"],
-            "Ciudad 2": row2["ciudad"],
-            "Match Afinidad": match_afinidad,
-            "Match Sinergia": match_sinergia,
-            "Total Empleados 1": row1["total_empleados"],
-            "Total Empleados 2": row2["total_empleados"],
-            "Diferencia Empleados": abs(row1["total_empleados"] - row2["total_empleados"])
-        })
-    
+    for (i, emp1), (j, emp2) in combinations(df.iterrows(), 2):
+        match = calcular_match_mase(emp1, emp2)
+        matches.append(match)
+
     df_matches = pd.DataFrame(matches)
-    df_matches = df_matches.sort_values(by=["Match Afinidad", "Match Sinergia"], ascending=False)
+    df_matches = df_matches.sort_values(by="Puntaje Total", ascending=False)
     return df_matches
 
-file_path = "data.xlsx"
-df = load_data(file_path)
-df_matches = generar_matching(df)
-df_matches.to_excel('Matches.xlsx')
+# Uso
+if __name__ == "__main__":
+    file_path = "datos_prueba_finales_corrected nuevas columnas intereses.xlsx"
+    df = load_data(file_path)
+    df_matches = generar_matching_mase(df)
+
+    # Guardar resultados
+    df_matches.to_excel("Emparejamientos_MASE.xlsx", index=False)
+    print("Emparejamientos generados y guardados en 'Emparejamientos_MASE.xlsx'")
