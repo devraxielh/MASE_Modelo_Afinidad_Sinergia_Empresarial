@@ -5,15 +5,15 @@
 ## Descripción
 
 Este algoritmo identifica empresas compatibles dentro de un ecosistema empresarial, evaluando cinco criterios fundamentales:
-	•	Objetivos estratégicos
-	•	Intereses estratégicos
-	•	Número total de empleados
-	•	Tamaño de la empresa
-	•	Ubicación geográfica
+* Objetivos estratégicos
+* Intereses estratégicos
+* Número total de empleados
+* Tamaño de la empresa
+* Ubicación geográfica
 
 El sistema genera emparejamientos entre empresas según:
-	•	**Afinidad:** similitud directa en los objetivos e intereses estratégicos.
-	•	**Sinergia:** complementariedad de estrategias entre empresas.
+* **Afinidad:** similitud directa en los objetivos e intereses estratégicos.
+* **Sinergia:** complementariedad de estrategias entre empresas.
 
 El objetivo es construir redes empresariales más inteligentes, colaborativas y alineadas estratégicamente.
 
