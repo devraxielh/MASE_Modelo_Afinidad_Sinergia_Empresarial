@@ -151,24 +151,26 @@ $(1010, 1050) = 0.50$ (distancia = 2 → 1 - 2/4 = 0.5)
 $(2011, 2012) = 0.75$ (distancia = 1 → 1 - 1/4 = 0.75)
 
 Una vez construida la matriz M (compatibilidad sectorial), el Modelo MASE la emplea de la siguiente manera:
-* Cada empresa E tiene un código CIIU.
-* Al comparar dos empresas A y B, se localiza la celda $(c_A, c_B)$ en la matriz, y se obtiene su valor:
+* Cada empresa $E$ tiene un código CIIU.
+* Al comparar dos empresas $A$ y $B$, se localiza la celda $(c_A, c_B)$ en la matriz, y se obtiene su valor:
 $M_{\text{sector}}(A,B) = M[c_A, c_B]$.
-* Ese valor (0 a 1) se suma al puntaje total $M_{\text{total}}$ junto con la afinidad, sinergia, empleados, ciudad y tamaño.
+* Ese valor $(0 a 1)$ se suma al puntaje total $M_{\text{total}}$ junto con la afinidad, sinergia, empleados, ciudad y tamaño.
 
 #### **f ) Puntaje Total de Matching**
 El puntaje total se obtiene combinando todas las métricas anteriores:
+
 ```math
 M_{total} = M_{afinidad} + M_{sinergia} + M_{empleados} + M_{ciudad} + M_{tamaño} + M_{sector}
 ```
+
 Cada componente aporta al valor total del emparejamiento:
-$M_{\text{afinidad}}$ similitud estratégica directa.
-$M_{\text{sinergia}}$ complementariedad en estrategias.
-$M_{\text{empleados}}$ similitud en capacidad operativa.
-$M_{\text{ciudad}}$ cercanía geográfica.
-$M_{\text{tamaño}}$ coincidencia en categoría organizacional.
-$M_{\text{sector}}$ mide cuán cercanos son los códigos CIIU (0 a 1) en la matriz de distancias.
-$M_{\text{total}}$ permite ordenar y priorizar los emparejamientos posibles dentro del ecosistema empresarial.
+* $M_{\text{afinidad}}$ similitud estratégica directa.
+* $M_{\text{sinergia}}$ complementariedad en estrategias.
+* $M_{\text{empleados}}$ similitud en capacidad operativa.
+* $M_{\text{ciudad}}$ cercanía geográfica.
+* $M_{\text{tamaño}}$ coincidencia en categoría organizacional.
+* $M_{\text{sector}}$ mide cuán cercanos son los códigos CIIU (0 a 1) en la matriz de distancias.
+* $M_{\text{total}}$ permite ordenar y priorizar los emparejamientos posibles dentro del ecosistema empresarial.
 
 Cuanto mayor sea el puntaje total, más recomendable es la conexión entre las dos empresas para alianzas, cooperación o desarrollo conjunto.
 
