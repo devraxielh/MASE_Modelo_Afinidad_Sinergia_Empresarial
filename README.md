@@ -118,7 +118,7 @@ Se define una función $\text{distanciaCiiu}(c_i, c_j)$ que mide qué tan difere
 3. Conversión a Compatibilidad (0 a 1)
 Para traducir la distancia a un índice de compatibilidad, se emplea:
 ```math
-\text{compatibilidad\_ciiu}(c_i, c_j)
+\text{compatibilidadCiiu}(c_i, c_j)
 = 1 - \frac{\text{distanciaCiiu}(c_i, c_j)}{\text{distancia\_máxima}}
 ```
 Donde:
@@ -129,7 +129,7 @@ Donde:
 4. Construcción de la Matriz
 * **Inicializar**: Se crea una matriz $M$ de tamaño $m \times m$, donde cada fila y columna corresponde a uno de los códigos CIIU.
 * **Iteración**: Para cada par $(c_i, c_j)$, se calcula:
-$M_{ij} = \text{compatibilidad\_ciiu}(c_i, c_j)$.
+$M_{ij} = \text{compatibilidadCiiu}(c_i, c_j)$.
 * **Simetría**: Dado que la compatibilidad es un concepto recíproco $(M_{ij} = M_{ji})$, se rellena la mitad inferior de la matriz con los mismos valores de la superior, o viceversa.
 Ejemplo para cuatro códigos $\{1010, 1050, 2011, 2012\}$:
 
