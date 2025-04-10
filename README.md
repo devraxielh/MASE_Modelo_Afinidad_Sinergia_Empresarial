@@ -11,7 +11,7 @@ Este algoritmo identifica empresas compatibles dentro de un ecosistema empresari
 * Tamaño de la empresa
 * Ubicación geográfica
 * Compatibilidad con Sectores economicos (Matriz de compatibilidad de actividades)
-El sistema genera emparejamientos entre empresas según:
+El sistema genera emparejamientos entre empresas.
 * **Afinidad:** similitud directa en los objetivos e intereses estratégicos.
 * **Sinergia:** complementariedad de estrategias entre empresas.
 
