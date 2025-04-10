@@ -74,8 +74,12 @@ Un valor alto de $M_{\text{sinergia}}$ sugiere que las empresas tienen capacidad
 #### **c) Diferencia de Empleados**
 Se usa una normalización inversa para favorecer empresas con números similares de empleados:
 ```math
-E_1 = E_{directos1} + E_{indirectos1} \\
-E_2 = E_{directos2} + E_{indirectos2} \\
+E_1 = E_{directos1} + E_{indirectos1}
+```
+```math
+E_2 = E_{directos2} + E_{indirectos2}
+```
+```math
 M_{empleados} = \frac{1}{1 + |E_1 - E_2|}
 ```
 Donde:
