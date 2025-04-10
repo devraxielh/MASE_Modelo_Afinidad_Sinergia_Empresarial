@@ -175,7 +175,9 @@ Cada componente aporta al valor total del emparejamiento:
 Cuanto mayor sea el puntaje total, más recomendable es la conexión entre las dos empresas para alianzas, cooperación o desarrollo conjunto.
 
 ### **4. Aplicaciones y Uso**
-El Modelo MASE tiene múltiples aplicaciones dentro de ecosistemas empresariales, redes de colaboración, programas de desarrollo económico y estrategias de integración territorial. Estas son algunas de sus principales utilidades:
+El Modelo MASE tiene múltiples aplicaciones dentro de ecosistemas empresariales, redes de colaboración, programas de desarrollo económico y estrategias de integración territorial.
+
+Estas son algunas de sus principales utilidades:
 * **Fomentar asociaciones estratégicas**
 Permite identificar empresas que comparten una visión similar en términos de objetivos e intereses estratégicos. Estas empresas pueden formar alianzas para proyectos conjuntos, compartir conocimientos o participar en programas colaborativos.
 * **Detectar oportunidades de sinergia**
