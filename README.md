@@ -109,7 +109,7 @@ A continuación se describe un procedimiento genérico para construir la matriz 
 - Extracción: Se obtuvo de la base de datos la lista de códigos CIIU de todas las empresas, asegurándose de que estén representados en 4 dígitos (por ejemplo, rellenando con ceros si fuera necesario).
 - Único: Se eliminan los duplicados para tener un conjunto único $\{c_1, c_2, \dots, c_m\}$ que serán las filas y columnas de la matriz.
 2. Definición de la Distancia Entre Códigos
-Se define una función $\text{distancia\_ciiu}(c_i, c_j)$ que mide qué tan diferentes son dos códigos. Existen diversas maneras de hacerlo, pero una de las más usadas es:
+Se define una función $\text{distanciaCiiu}(c_i, c_j)$ que mide qué tan diferentes son dos códigos. Existen diversas maneras de hacerlo, pero una de las más usadas es:
 - Comparamos dígito a dígito desde el inicio hasta que detectemos una diferencia.
 - Distancia = número de dígitos (sobre 4) que no coinciden en los códigos ejemplo:
 	- 1010 vs. 1050 → Coinciden en “10” (2 dígitos) y difieren en el tercero → distancia = 2.
@@ -119,7 +119,7 @@ Se define una función $\text{distancia\_ciiu}(c_i, c_j)$ que mide qué tan dife
 Para traducir la distancia a un índice de compatibilidad, se emplea:
 ```math
 \text{compatibilidad\_ciiu}(c_i, c_j)
-= 1 - \frac{\text{distancia\_ciiu}(c_i, c_j)}{\text{distancia\_máxima}}
+= 1 - \frac{\text{distanciaCiiu}(c_i, c_j)}{\text{distancia\_máxima}}
 ```
 Donde:
 * distancia\_máxima = 4 (siempre que use 4 dígitos).
