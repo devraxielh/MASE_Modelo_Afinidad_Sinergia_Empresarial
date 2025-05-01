@@ -4,7 +4,7 @@
 
 ## Descripción
 
-Este algoritmo identifica empresas compatibles dentro de un ecosistema empresarial, evaluando cinco criterios fundamentales:
+Este algoritmo identifica empresas compatibles dentro de un ecosistema empresarial, evaluando seis criterios fundamentales:
 * Objetivos estratégicos
 * Intereses estratégicos
 * Número total de empleados
